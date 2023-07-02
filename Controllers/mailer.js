@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';
 export async function MailSender(data){
     //delay setting up
     let num=data.delay<0 ? -1*data.delay : data.delay
-    let DELAY=(num*1000)+1000;
+    let DELAY=num;
     //Creating transport
     let sender=nodemailer.createTransport({
         service:"gmail",
