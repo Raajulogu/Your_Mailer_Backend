@@ -2,8 +2,10 @@ import nodemailer from 'nodemailer';
 
 
 export async function MailSender(data){
+    //delay setting up
     let num=data.delay<0 ? -1*data.delay : data.delay
-    let DELAY=num*1000;
+    let DELAY=(num*1000)+1000;
+    //Creating transport
     let sender=nodemailer.createTransport({
         service:"gmail",
         auth:{
@@ -20,6 +22,7 @@ export async function MailSender(data){
         name:"Your Mailer",
         address:"rajeshkumarlogu145@gmail.com"
     }
+    //mail content
     let recieve={
         from:from,
         to:reciever,
@@ -28,6 +31,7 @@ export async function MailSender(data){
         cc:cc,
         bcc:bcc
     };
+    //sending mail by delay
     setTimeout(()=>{
         sender.sendMail(recieve,function(error,info){
             if(error){
