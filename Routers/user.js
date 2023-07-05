@@ -63,8 +63,12 @@ router.post("/login",async(req,res)=>{
 router.post("/mail",isAuthenticated,async(req,res)=>{
     try {
         let data=req.body.data;
-        await MailSender(data)
-        res.status(200).json({message:"Mail Sent Successfully"});
+        let mail=await MailSender(data)
+        console.log(mail);
+        if(mail){
+            res.status(200).json({message:"Mail Sent Successfully"});
+        }
+        
     } catch (error) {
         console.log("Error",error)
         res.status(500).json({message:"Internal Server Error"})

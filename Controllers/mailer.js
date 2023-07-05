@@ -36,5 +36,6 @@ export async function MailSender(data){
             console.log('Email sent: ' + info.response);
           }
     });
+    return 1;
     
 }
