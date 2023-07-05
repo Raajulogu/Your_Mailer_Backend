@@ -32,7 +32,9 @@ export async function MailSender(data){
     sender.sendMail(recieve,function(error,info){
         if(error){
             console.log("error",error);
-        }
+        }else {
+            console.log('Email sent: ' + info.response);
+          }
     });
     
 }
