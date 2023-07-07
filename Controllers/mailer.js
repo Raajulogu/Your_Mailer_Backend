@@ -29,13 +29,16 @@ export async function MailSender(data){
         cc:cc,
         bcc:bcc
     };
+    let flag=true;
     await sender.sendMail(recieve,function(error,info){
         if(error){
             console.log("error",error);
-        }else {
+            flag=false
+        }
+        else {
             console.log('Email sent: ' + info.response);
           }
     });
-    return 1;
+    return flag;
     
 }

@@ -68,6 +68,9 @@ router.post("/mail",isAuthenticated,async(req,res)=>{
         if(mail){
             res.status(200).json({message:"Mail Sent Successfully"});
         }
+        else{
+            res.status(500).json({message:"Mail sent Unsuccessfull"})
+        }
         
     } catch (error) {
         console.log("Error",error)
