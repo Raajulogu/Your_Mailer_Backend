@@ -29,7 +29,7 @@ export async function MailSender(data){
         cc:cc,
         bcc:bcc
     };
-    sender.sendMail(recieve,function(error,info){
+    await sender.sendMail(recieve,function(error,info){
         if(error){
             console.log("error",error);
         }else {
