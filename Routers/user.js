@@ -64,7 +64,6 @@ router.post("/mail",isAuthenticated,async(req,res)=>{
     try {
         let data=req.body.data;
         let mail=await MailSender(data)
-        console.log(mail);
         if(mail){
             res.status(200).json({message:"Mail Sent Successfully"});
         }
