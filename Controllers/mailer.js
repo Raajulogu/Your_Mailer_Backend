@@ -4,6 +4,8 @@ import nodemailer from 'nodemailer';
 export async function MailSender(data){
     //delay setting up
     //Creating transport
+    let num=data.delay<0 ? -1*data.delay : data.delay
+    let DELAY=num*1000;
     let sender=nodemailer.createTransport({
         service:"gmail",
         auth:{
@@ -30,15 +32,17 @@ export async function MailSender(data){
         bcc:bcc
     };
     let flag=true;
-    await sender.sendMail(recieve,function(error,info){
-        if(error){
-            console.log("error",error);
-            flag=false
-        }
-        else {
-            console.log('Email sent: ' + info.response);
-          }
-    });
+    setTimeout(()=>{
+        sender.sendMail(recieve,function(error,info){
+            if(error){
+                console.log("error",error);
+            }
+            else {
+                console.log('Email sent: ' + info.response);
+              }
+        });},DELAY
+      );
+    
     return flag;
     
 }
